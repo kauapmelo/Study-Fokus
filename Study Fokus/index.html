@@ -13,7 +13,7 @@
     <main class="container"> <!--estrutura-->
 
         <div class="logo"> 
-            <img src="imagens/logo_studyfocus_transparente.png" alt="Logo Study Focus">
+            <img  class="logo" src="imagens/LOGO.png" alt="Logo Study Focus">
          </div> <!--logo-->
 
          <h1 class="texto-logo">
@@ -31,33 +31,34 @@
         <div class="modalOverlay" id="modal"><!--MODAL-->
             <div class="modal">
                 <div class="modalCabecalho"><!--CABEÇALHO DO MODAL-->
-                    <h2>Adicionar Nova Matéria</h2>
+                    <h2 >Adicionar Matéria</h2>
                     <button class="fecharModal" id="fecharModal">
                         x
                     </button>
                 </div>
                 <label><!--INPUT NOME DA MATÉRIA-->
-                    Nome da matéria :
-                    <input type="text" placeholder="Ex: Matemática, História..." required> 
+                    Nome da matéria
+                    <input id="inputMateria" type="text" placeholder="Ex: Matemática, História..." required> 
                 </label>
-                <label >Cor do Card :</label>
+                <label >Cor do Card</label>
                 <div class="opcaoCor">
-                    <button class="corAzul">
+
+                    <button class="cor Azul">
                         Azul
                     </button>
-                    <button class="corRoxo">
+                    <button class="cor Roxo">
                         Roxo
                     </button>
-                    <button class="corVerde">
+                    <button class="cor Verde">
                         Verde
                     </button>
-                    <button class="corLaranja">
+                    <button class="cor Laranja">
                         Laranja
                     </button>
-                    <button class="corRosa">
+                    <button class="cor Rosa">
                         Rosa
                     </button>
-                    <button class="corCiano">
+                    <button class="cor Ciano">
                         Ciano
                     </button>
                 </div>
@@ -66,12 +67,8 @@
                 </button>
             </div>
         </div>
-
+        
         <section class="cards"> <!--card-->
-        <div class="card">
-        <div class="iconcard"> <img src="imagens/logo_transparente.png" alt="Imagem logo do card"></img></div>
-        <h3 class="cardtitulo">Matemática</h3>
-        </div>
         </section>
 
         <script src="script.js"></script> <!--link js-->

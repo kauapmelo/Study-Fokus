@@ -1,5 +1,8 @@
+* {
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 .logo { /* logo */
-    width: 500px; 
+    width: 20rem; 
     height: auto;
     border-radius: 16px;
 
@@ -72,13 +75,14 @@ h2 { /* subtitulo */
     max-width: 1100px;
     margin: 0 auto;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 24px;
 }
 
 .card { /* card */
     width: 260px;
     height: 140px;
-    background: linear-gradient(135deg, #06b6d4, #0891b2);
     border-radius: 18px;
     padding: 20px;
     color: white;
@@ -91,19 +95,36 @@ h2 { /* subtitulo */
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
+.card.Verde{
+    background: linear-gradient(135deg, #059669, #059669);
+}
+.card.Azul{
+    background: linear-gradient(135deg, #2879fa, #2879fa);
+}
+.card.Rosa{
+    background: linear-gradient(135deg, #eb4297, #eb4297);
+}
+.card.Ciano{
+    background: linear-gradient(135deg, #06b6d4, #06b6d4);
+}
+.card.Laranja{
+    background: linear-gradient(135deg, #f97316, #f97316);
+}
+.card.Roxo{
+    background: linear-gradient(135deg, #8b5cf6, #8b5cf6);
+}
 .card:hover { /* animação */
     transform: translateY(-6px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 .iconcard { /* icone do card */
-    width: 100px;
+    width: 2rem;
     height: auto;
 }
 
 .iconcard img { /* icone da imagem */
-    width: 120px;
+    width: 2rem;
     height: auto;
     object-fit: contain;
     margin-top: -45px;
@@ -133,8 +154,13 @@ h2 { /* subtitulo */
 
 /* Modal */
 .modal {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
     background: white;
-    width: 420px;
+    width: 30rem;
+    height: 30rem;
     padding: 24px;
     border-radius: 16px;
 
@@ -146,19 +172,39 @@ h2 { /* subtitulo */
 .modalCabecalho {
     display: flex;
     justify-content: space-between;
+    text-align: center;
     align-items: center;
     margin-bottom: 20px;
 }
+.modalCabecalho.h2{
+    text-align: center;
 
-.fecharModal {
-    background: none;
-    border: none;
-    font-size: 30px;
-    cursor: pointer;
-    margin-top: -20px;
-    margin-left: 50px;
+}
+h2{
+    text-align: center;
+    
 }
 
+.fecharModal {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    margin-bottom: 5rem;
+    margin-left: 7rem;
+}
+label{
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+input{
+    margin-top: 1rem;
+
+}
 /* Inputs */
 .modal label {
     display: block;
@@ -193,6 +239,7 @@ h2 { /* subtitulo */
     margin-bottom: 20px;
     border-radius: 20px;
     border: none;
+
 }
 
 .color {
@@ -213,35 +260,48 @@ h2 { /* subtitulo */
     font-size: 16px;
     cursor: pointer;
 }
-.corAzul {
-    background-color: #3b82f6;
+
+.cor.Azul {
+    background: #2879fa;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+.cor.Verde {
+    background: #10b981;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+.cor.Roxo {
+    background: #8b5cf6;
+    border-radius: 20px;
+    border: none;
+}
+.cor.Laranja {
+    background: #f97316;
+    border-radius: 20px;
+    border: none;
+}
+.cor.Ciano{
+    background: #06b6d4;
+    border-radius: 20px;
+    border: none;
+}
+.cor.Rosa{
+    background: #eb4297;
     padding: 10px;
     border-radius: 20px;
     border: none;
 }
-.corVerde {
-    background-color: #10b981;
-    border-radius: 20px;
-    border: none;
+.cor.ativo{
+    outline: 2px solid black;
 }
-.corRoxo {
-    background-color: #8b5cf6;
-    border-radius: 20px;
-    border: none;
+.cor{
+    cursor: pointer;
 }
-.corLaranja {
-    background-color: #f97316;
-    border-radius: 20px;
-    border: none;
-}
-.corCiano{
-    background-color: #06b6d4;
-    border-radius: 20px;
-    border: none;
-}
-.corRosa{
-    background-color: #eb4297;
-    padding: 10px;
-    border-radius: 20px;
-    border: none;
+.excluirCard{
+    width: 10rem;
+    height: 10rem;
 }
