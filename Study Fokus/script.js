@@ -3,50 +3,101 @@ const fecharModal = document.getElementById("fecharModal");
 const modal = document.getElementById("modal");
 const inputMateria = document.getElementById("inputMateria");
 const btnCriar = document.querySelector(".criarMateria");
-const cardsContainer = document.querySelector(".cards")
+const cardsContainer = document.querySelector(".cards");
 
-
-let corEscolhida = ""
+let corEscolhida = "";
 const botoesCor = document.querySelectorAll(".cor");
 
-botoesCor.forEach( botao  => {
-    botao.addEventListener("click", () =>{
-        corEscolhida = botao.classList[1]
-    botoesCor.forEach(b => b.classList.remove("ativo"))
-    botao.classList.add("ativo")
-});
-});
-// Evento para criar card
-btnCriar.addEventListener("click", () => {
-    // variavel input do valor
-    const nome  = inputMateria.value.trim();
-    // verificação 
-    if(nome === ""){
-        alert("Escreva algo!");
-        return ;
-    }
-    if(!corEscolhida){
-        alert("Escolha uma cor!")
-        return ;
-    }
+// =========================
+// LOCAL STORAGE
+// =========================
+const STORAGE_KEY = "materias";
 
+function carregarMaterias() {
+    const materias = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    materias.forEach(m => criarCard(m.nome, m.cor, false));
+}
+
+function salvarMateria(nome, cor) {
+    const materias = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    materias.push({ nome, cor });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(materias));
+}
+
+function removerMateria(nome) {
+    let materias = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    materias = materias.filter(m => m.nome !== nome);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(materias));
+}
+
+// =========================
+// CORES
+// =========================
+botoesCor.forEach(botao => {
+    botao.addEventListener("click", () => {
+        corEscolhida = botao.classList[1];
+        botoesCor.forEach(b => b.classList.remove("ativo"));
+        botao.classList.add("ativo");
+    });
+});
+
+// =========================
+// CRIAR CARD
+// =========================
+function criarCard(nome, cor, salvar = true) {
     const novoCard = document.createElement("div");
-    novoCard.classList.add("card", corEscolhida);
-    novoCard.innerHTML = `<div class="iconcard"> <img  class="excluirCard" src="imagens/lixo-icon.png" alt="Imagem logo do card"></img></div>
-        <h3 class="cardtitulo">${nome}</h3>
-    
+    novoCard.classList.add("card", cor);
 
-        ` ;
-        const btnExcluir = novoCard.querySelector(".excluirCard")
-        btnExcluir.addEventListener("click", () => {
-            novoCard.remove()
-        });
-        cardsContainer.appendChild(novoCard)
-        inputMateria.value = ""
-        corEscolhida = ""
-        botoesCor.forEach((b) => b.classList.remove("ativo"))
+    novoCard.innerHTML = `
+        <img class="excluirCard" src="imagens/lixo-icon.png" alt="Excluir">
+        <h3 class="cardtitulo">${nome}</h3>
+    `;
+
+    // Excluir
+    const btnExcluir = novoCard.querySelector(".excluirCard");
+    btnExcluir.addEventListener("click", (e) => {
+        e.stopPropagation();
+        novoCard.remove();
+        removerMateria(nome);
+    });
+
+    // Abrir matéria
+    novoCard.addEventListener("click", () => {
+        localStorage.setItem("corMateria", cor);
+        localStorage.setItem("nomeMateria", nome);
+        window.location.href = "materia.html";
+    });
+
+    cardsContainer.appendChild(novoCard);
+
+    if (salvar) salvarMateria(nome, cor);
+}
+
+// =========================
+// BOTÃO CRIAR
+// =========================
+btnCriar.addEventListener("click", () => {
+    const nome = inputMateria.value.trim();
+
+    if (nome === "") {
+        alert("Escreva algo!");
+        return;
+    }
+    if (!corEscolhida) {
+        alert("Escolha uma cor!");
+        return;
+    }
+
+    criarCard(nome, corEscolhida, true);
+
+    inputMateria.value = "";
+    corEscolhida = "";
+    botoesCor.forEach(b => b.classList.remove("ativo"));
 });
 
+// =========================
+// MODAL
+// =========================
 abrirModal.addEventListener("click", () => {
     modal.style.display = "flex";
 });
@@ -55,13 +106,24 @@ fecharModal.addEventListener("click", () => {
     modal.style.display = "none";
 });
 
-// Fecha clicando fora
 modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-        modal.style.display = "none";
+    if (e.target === modal) modal.style.display = "none";
+});
+
+// =========================
+// BOTÃO ATIVO
+// =========================
+inputMateria.addEventListener("input", () => {
+    if (inputMateria.value.trim() !== "") {
+        btnCriar.classList.add("ativo");
+        btnCriar.disabled = false;
+    } else {
+        btnCriar.classList.remove("ativo");
+        btnCriar.disabled = true;
     }
 });
 
-function carrinho() {
-    
-}
+// =========================
+// INICIALIZAÇÃO
+// =========================
+carregarMaterias();
