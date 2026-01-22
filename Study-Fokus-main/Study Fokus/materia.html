@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="imagens/LOGO.png" type="image/png"> <!--favicon do site-->
+    <title>Study Fokus | Matéria</title>
+    <link rel="stylesheet" href="./materia.css">
+</head>
+
+<body>
+
+    <!-- cabeçalho -->
+    <header class="header">
+        <a href="index.html" class="voltar">← Voltar</a>
+
+        <div class="titulo">
+            <div class="icone">📘</div>
+            <div>
+                <h1 id="tituloMateria">Matéria</h1>
+                <p>Organize seus estudos e acompanhe seu progresso</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- conteúdo -->
+    <div class="container">
+
+        <!-- assuntos -->
+        <section class="card">
+            <div class="card-header">
+                <h2>Assuntos para Estudar</h2>
+                <span>0/1 concluídos</span>
+            </div>
+
+            <div class="progresso">
+                <div></div>
+            </div>
+
+            <div class="addAssunto">
+                <input type="text" placeholder="Adicionar novo assunto...">
+                <button class="botaoAssunto">+</button>
+            </div>
+
+            <ul class="lista">
+                <li class="item">
+                    <input type="checkbox">
+                    <span>Raiz quadrada</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- cronômetro -->
+        <section class="card">
+            <div class="card-header">
+                <h2>Cronômetro</h2>
+                <span>Definir tempo</span>
+            </div>
+
+            <div class="timer">
+                <div class="circulo">
+                    <h1 class="time">25:00</h1>
+                    <p class="status">Pausado</p>
+                </div>
+
+                <div class="acoes">
+                    <button>▶</button>
+                    <button>⟳</button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="materia.js"></script>
+</body>
+
+</html>
