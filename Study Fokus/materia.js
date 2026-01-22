@@ -2,7 +2,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // =========================
   // TEMA (cor da matéria)
   // =========================
+
   const header = document.querySelector(".header");
+  const tituloMateria = document.getElementById("tituloMateria");
+
+  const materiaSalva = localStorage.getItem("materiaSelecionada");
+
+  if (materiaSalva) {
+    tituloMateria.textContent = materiaSalva;
+  };
+  
+  
 
   // Cor salva quando você cria a matéria (ex.: "Azul", "Verde"...)
   const corMateriaRaw = localStorage.getItem("corMateria") || "Azul";

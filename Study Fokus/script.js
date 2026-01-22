@@ -53,6 +53,11 @@ function criarCard(nome, cor, salvar = true) {
         <h3 class="cardtitulo">${nome}</h3>
     `;
 
+    novoCard.addEventListener("click", () => {
+    localStorage.setItem("materiaSelecionada", nome);
+    window.location.href = "materia.html";
+});
+
     // Excluir
     const btnExcluir = novoCard.querySelector(".excluirCard");
     btnExcluir.addEventListener("click", (e) => {

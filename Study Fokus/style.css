@@ -75,6 +75,7 @@ h2 {
 .botao1:hover {
     transform: translateY(-6px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 350ms ease-in-out;
 }
 
 .cards {
@@ -85,27 +86,34 @@ h2 {
     flex-wrap: wrap;
     justify-content: center;
     gap: 24px;
+
 }
 
-.card {
-    width: 260px;
-    height: 140px;
-    border-radius: 18px;
-    padding: 16px;
-    color: white;
-    cursor: pointer;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.card{
+  width: 260px;
+  height: 140px;
+  border-radius: 18px;
+  padding: 20px;
+  color: white;
+  cursor: pointer;
 
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+
 }
 
-.card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+/*Animação*/
+.card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  transition: transform 350ms ease-in-out;
 }
+
+
 
 .card.Verde {
     background: linear-gradient(135deg, #0bed47, #02ea40);
@@ -131,11 +139,6 @@ h2 {
     background: linear-gradient(135deg, #8b5cf6, #8b5cf6);
 }
 
-.card:hover {
-    /* animação */
-    transform: translateY(-6px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
 
 .iconcard {
     /* icone do card */
@@ -143,19 +146,6 @@ h2 {
     height: auto;
 }
 
-.card {
-    /* card */
-    width: 260px;
-    height: 140px;
-    border-radius: 18px;
-    padding: 20px;
-    color: white;
-
-    display: flex;
-    flex-direction: column;
-
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
 
 .card-topo {
     /* card do topo */
